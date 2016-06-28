@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <arpa/inet.h>
-#include <netinet/in.h>
 #include <sys/socket.h>
 
 int main (int argc, char **argv){
@@ -31,9 +30,6 @@ int main (int argc, char **argv){
       ip2err = inet_aton( ip2, &addr2 );
       if (ip2err == 0){ fprintf(stderr, "Invalid address: %s\n", ip2); continue; }
       ip2int = ntohl( addr2.s_addr );
-
-      printf("%d\n", ip1int);
-      printf("%d\n", ip2int);
 
       mask = ip1int ^ ip2int;
       int mask1 = ~mask;
